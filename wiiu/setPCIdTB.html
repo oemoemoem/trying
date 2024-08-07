@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link type="text/css" rel="stylesheet" href="css/main.css" />
+<title>Wii U Image Share</title>
+<style>
+	.error_message{
+		text-align : center;
+		margin-bottom : 20px;
+		word-wrap: break-word;
+	}
+</style>
+<script>
+var logChecker = new XMLHttpRequest();
+function checkIfLinked() {
+	logChecker.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		   alert(logChecker.responseText);
+		}
+	};
+	logChecker.open("GET", "link/check?id=${PCLoginCode}", true);
+	logChecker.send();
+}
+setInterval('checkIfLinked()', 5000);
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="page-header">
+    <h1><img src="img/logo_US_en.png" width="530" height="80" alt="Wii U Image Share" /></h1>
+  </div>
+  
+  <div class="body">
+  
+  <div class="contents">
+    <div class="site-desc">
+    <p>Visit https://i.retrosite.org/link and enter the following code on your computer, then select <i>Continue</i>:</p>
+	<p><font size=7><b>${PCLoginCode}</b></font></p>
+    <p></p>
+    </div>
+    <div class="btn-back-area">
+    <div><a href="/wiiu/getConsoleIdTB" class="btn-back">Continue</a></div>
+    </div>
+
+  </div>
+  </div>
+  
+  <div class="page-footer">
+    <div class="copyright">
+      <p>This site is not associated nor endorsed by Nintendo.</p>
+    </div>
+  </div>
+
+</body>
+</html>

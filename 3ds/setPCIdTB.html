@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link type="text/css" rel="stylesheet" href="css/main.css" />
+<title>Nintendo 3DS Image Share</title>
+<style>
+	.error_message{
+		text-align : center;
+		margin-bottom : 20px;
+		word-wrap: break-word;
+	}
+</style>
+<script>
+var logChecker = new XMLHttpRequest();
+function checkIfLinked() {
+	logChecker.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var response = logChecker.responseText
+			if (response == "invalid") {
+				location.reload(); 
+			} else if (response == "true") {
+				window.location.href = '/link/TWLogin?id=${PCLoginCode}';
+			}
+		}
+	};
+	logChecker.open("GET", "link/check?id=${PCLoginCode}", true);
+	logChecker.send();
+}
+setInterval('checkIfLinked()', 5000);
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="page-header">
+    <h1><img src="img/logo_en.png" width="220" height="46" alt="Nintendo 3DS Image Share" /></h1>
+  </div>
+  
+  <div class="body">
+  
+  <div class="contents">
+    <div class="site-desc">
+    <p>Visit https://i.retrosite.org/link on your computer, and enter the following code.</p>
+	<p><font size=7><b>${PCLoginCode}</b></font></p>
+    <p></p>
+    </div>
+
+  </div>
+  </div>
+  
+  <div class="page-footer">
+    <div class="copyright">
+      <p>This site is not associated nor endorsed by Nintendo.</p>
+    </div>
+  </div>
+
+</body>
+</html>
